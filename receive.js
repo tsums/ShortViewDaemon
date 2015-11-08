@@ -21,12 +21,12 @@ app.post('/receive', function(request, respond) {
     console.log('timestamp:\t' + timestamp);
     console.log('load:\t' + load);
 
-    var DataEntry = new DataEntry({
+    var de = new DataEntry({
         timestamp: new Date(timestamp),
         cpu_usage: load
     });
 
-    DataEntry.save(function(err) {
+    de.save(function(err) {
         if (err) {
             console.log(err);
         }
