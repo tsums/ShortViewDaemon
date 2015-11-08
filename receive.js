@@ -53,13 +53,14 @@ setInterval(function() {
         timestamp: Date.now()
     });
 
-    async.parallel([function() {
+    async.parallel([function(callback) {
         exec('/opt/shortview/load.sh', function(error, stdout, sterr) {
             var num = stdout.split(' ');
             data.cpu0 = num[0];
             data.cpu0 = num[1];
             data.cpu0 = num[2];
             data.cpu0 = num[3];
+            callback();
         });
     }], function() {
         de.save(function(err) {
