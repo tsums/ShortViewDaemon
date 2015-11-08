@@ -65,8 +65,10 @@ setInterval(function() {
     }, function(callback) {
         exec('cat /proc/meminfo | head -n 3', function(error, stdout, stderr) {
             var meminfo = stdout.split('\n');
-            data.mem_total = meminfo[0].split('\s')[1];
-            data.mem_free = meminfo[1].split('\s')[1];
+            var total = meminfo[0].split(' ');
+            data.mem_total = total[total.length -2];
+            var free = meminfo[1].split(' ');
+            data.mem_free = free[free.length -2];
             callback();
         });
     }], function() {
