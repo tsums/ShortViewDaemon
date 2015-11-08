@@ -1,0 +1,9 @@
+[Unit]
+Description=ShortView System Monitoring Daemon
+After=mongodb.service
+
+[Service]
+ExecStart=/usr/bin/node /opt/shortview/receive.js
+
+[Install]
+WantedBy=multi-user.target
