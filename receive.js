@@ -67,6 +67,7 @@ setInterval(function() {
             var meminfo = stdout.split('\n');
             data.mem_total = meminfo[0].split('\s')[1];
             data.mem_free = meminfo[1].split('\s')[1];
+            callback();
         });
     }], function() {
         data.save(function(err) {
