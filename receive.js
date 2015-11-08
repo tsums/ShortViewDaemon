@@ -21,8 +21,11 @@ app.post('/receive', function(request, respond) {
     console.log('timestamp:\t' + timestamp);
     console.log('load:\t' + load);
 
+    var d = new Date(0);
+    d.setUTCSeconds(timestamp);
+
     var de = new DataEntry({
-        timestamp: new Date(timestamp),
+        timestamp: d,
         cpu_usage: load
     });
 
