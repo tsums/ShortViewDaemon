@@ -16,7 +16,7 @@ app.use(cors())
 app.use(bodyParser.json());
 
 app.get('/clear', function(request, response) {
-    DataEntry.remove({}. function(err) {
+    DataEntry.remove({}, function(err) {
         if (err) {
             console.log(err);
         }
