@@ -1,24 +1,22 @@
 var express = require('express'),
     fs = require('fs')
     url = require('url');
+var mongoose = require('mongoose')
 var app = express();
+var bodyParser = require('body-parser');
 
 var count = 0;
 
+mongoose.connect('mongodb://localhost/myapp');
+
+var DataEntry = require('./models/DataEntry')
+
+app.use(bodyParser.json());
+
 app.post('/receive', function(request, respond) {
-    var body = '';
-    count += 1;
 
-    filePath = __dirname + '/public/data' + count + '.txt';
-    request.on('data', function(data) {
-        body += data;
-    });
+    console.log(request.body);
 
-    request.on('end', function (){
-        fs.appendFile(filePath, body, function() {
-            respond.end();
-        });
-    });
 });
 
 app.listen(9235);
