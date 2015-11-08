@@ -48,7 +48,7 @@ app.get('/latest', function(request, response) {
 
 setInterval(function() {
 
-    exec('./load.sh', function(error, stdout, sterr) {
+    exec('/opt/shortview/load.sh', function(error, stdout, sterr) {
         var num = stdout.split(' ');
 
         var de = new DataEntry({
