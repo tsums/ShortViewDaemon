@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Install ShortView Daemon on Ubuntu Server
+apt-get update
 apt-get install curl nodejs-legacy npm git stress mongodb -y
 git clone https://github.com/ShortView/ShortViewDaemon /opt/shortview
 cd /opt/shortview
