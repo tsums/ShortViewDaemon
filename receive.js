@@ -46,7 +46,7 @@ app.get('/cpu_usage', function(request, response) {
         }
 
         response.send(entries);
-    }
-})
+    });
+});
 
 app.listen(9235);
