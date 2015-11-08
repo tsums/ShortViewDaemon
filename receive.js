@@ -31,7 +31,7 @@ app.post('/receive', function(request, respond) {
         cpu_usage: load,
         mem_free: mem_free,
         mem_used: mem_used,
-        mem_cace: mem_cache
+        mem_cache: mem_cache
     });
 
     de.save(function(err) {
