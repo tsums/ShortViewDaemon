@@ -38,4 +38,15 @@ app.post('/receive', function(request, respond) {
 
 });
 
+app.get('/cpu_usage'. function(request, response) {
+
+    DataEntry.find().sort({timestamp: -1}).limit(10).exec(function(err, entries) {
+        if (err) {
+            console.log(err);
+        }
+
+        response.send(entries);
+    }
+})
+
 app.listen(9235);
