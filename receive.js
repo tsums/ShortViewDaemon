@@ -5,12 +5,14 @@ var mongoose = require('mongoose')
 var app = express();
 var bodyParser = require('body-parser');
 
+var cors = require('cors')
 var count = 0;
 
 mongoose.connect('mongodb://localhost/myapp');
 
 var DataEntry = require('./models/DataEntry');
 
+app.use(cors())
 app.use(bodyParser.json());
 
 app.post('/receive', function(request, respond) {
