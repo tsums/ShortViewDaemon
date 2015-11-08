@@ -7,15 +7,17 @@ var bodyParser = require('body-parser');
 
 var count = 0;
 
-mongoose.connect('mongodb://localhost/myapp');
+// mongoose.connect('mongodb://localhost/myapp');
 
-var DataEntry = require('./models/DataEntry')
+// var DataEntry = require('./models/DataEntry');
 
 app.use(bodyParser.json());
 
 app.post('/receive', function(request, respond) {
 
     console.log(request.body);
+
+    respond.status(200).send();
 
 });
 
