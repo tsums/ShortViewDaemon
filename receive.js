@@ -22,6 +22,11 @@ app.post('/receive', function(request, respond) {
     var mem_free = request.body.payload[0].LONGTERM['Memory.real.free'];
     var mem_cache = request.body.payload[0].LONGTERM['Memory.real.cache'];
     var mem_used = request.body.payload[0].LONGTERM['Memory.real.used'];
+    var cpu0 = request.body.payload[0].LONGTERM['CPU.cpu0.user'];
+    var cpu1 = request.body.payload[0].LONGTERM['CPU.cpu1.user'];
+    var cpu2 = request.body.payload[0].LONGTERM['CPU.cpu2.user'];
+    var cpu3 = request.body.payload[0].LONGTERM['CPU.cpu3.user'];
+
 
     var d = new Date(0);
     d.setUTCSeconds(timestamp);
@@ -31,7 +36,11 @@ app.post('/receive', function(request, respond) {
         cpu_usage: load,
         mem_free: mem_free,
         mem_used: mem_used,
-        mem_cache: mem_cache
+        mem_cache: mem_cache,
+        cpu0: cpu0,
+        cpu1: cpu1,
+        cpu2: cpu2,
+        cpu3: cpu3
     });
 
     de.save(function(err) {
