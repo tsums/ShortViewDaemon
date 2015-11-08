@@ -6,7 +6,7 @@ var DataEntry = new Schema({
     cpu_usage: {type: Number, required: true},
     mem_free: {type: Number, required: true},
     mem_cache: {type: Number, required: true},
-    mem_used: {type: Number, required: true}
+    mem_used: {type: Number, required: true},
     cpu0: {type: Number},
     cpu1: {type: Number},
     cpu2: {type: Number},
