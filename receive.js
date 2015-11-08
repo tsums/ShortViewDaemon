@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var exec = require('child_process').exec;
 var cors = require('cors');
 var count = 0;
+var async = require('async');
 
 mongoose.connect('mongodb://localhost/myapp');
 
@@ -48,21 +49,19 @@ app.get('/latest', function(request, response) {
 
 setInterval(function() {
 
-    exec('/opt/shortview/load.sh', function(error, stdout, sterr) {
-        var num = stdout.split(' ');
+    var data = new DataEntry({
+        timestamp: Date.now()
+    });
 
-        var de = new DataEntry({
-            timestamp: Date.now(),
-            // cpu_usage: load,
-            // mem_free: mem_free,
-            // mem_used: mem_used,
-            // mem_cache: mem_cache,
-            cpu0: num[0],
-            cpu1: num[1],
-            cpu2: num[2],
-            cpu3: num[3]
+    async.parallel([function() {
+        exec('/opt/shortview/load.sh', function(error, stdout, sterr) {
+            var num = stdout.split(' ');
+            data.cpu0 = num[0];
+            data.cpu0 = num[1];
+            data.cpu0 = num[2];
+            data.cpu0 = num[3];
         });
-
+    }], function() {
         de.save(function(err) {
             if (err) {
                 console.log(err);
