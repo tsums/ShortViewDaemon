@@ -57,9 +57,9 @@ setInterval(function() {
         exec('/opt/shortview/load.sh', function(error, stdout, sterr) {
             var num = stdout.split(' ');
             data.cpu0 = num[0];
-            data.cpu0 = num[1];
-            data.cpu0 = num[2];
-            data.cpu0 = num[3];
+            data.cpu1 = num[1];
+            data.cpu2 = num[2];
+            data.cpu3 = num[3];
             callback();
         });
     }], function() {
