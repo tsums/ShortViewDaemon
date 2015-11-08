@@ -6,4 +6,4 @@ var DataEntry = new Schema({
     cpu_usage: {type: Number, required: true}
 });
 
-module.exports = mongoose.model('AttendanceRecord', AttendanceRecord);
+module.exports = mongoose.model('DataEntry', DataEntry);
