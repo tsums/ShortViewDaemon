@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var DataEntry = new Schema({
     timestamp: {type: Date, index: true},
     cpu_usage: {type: Number},
-    mem_free: {type: Number,
+    mem_free: {type: Number},
     mem_cache: {type: Number},
     mem_used: {type: Number},
     cpu0: {type: Number},
