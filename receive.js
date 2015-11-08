@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.post('/receive', function(request, respond) {
 
     var timestamp = request.body.payload[0].timestamp;
-    var load = request.body.payload[0].LONGTERM.load;
+    var load = request.body.payload[0].LONGTERM.Load;
 
     console.log('timestamp:\t' + timestamp);
     console.log('load:\t' + load);
