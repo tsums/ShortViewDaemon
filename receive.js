@@ -62,6 +62,12 @@ setInterval(function() {
             data.cpu3 = num[3];
             callback();
         });
+    }, function(callback) {
+        exec('cat /proc/meminfo | head -n 3', function(error, stoud, stderr) {
+            var meminfo = stdout.split('\n');
+            data.mem_total = meminfo[0].split('\s')[1];
+            data.mem_free = meminfo[1].split('\s')[1];
+        });
     }], function() {
         data.save(function(err) {
             if (err) {
