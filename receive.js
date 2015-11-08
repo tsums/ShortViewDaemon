@@ -39,7 +39,7 @@ app.post('/receive', function(request, respond) {
 
 app.get('/cpu_usage', function(request, response) {
 
-    DataEntry.find().sort({timestamp: -1}).exec(function(err, entries) {
+    DataEntry.find().sort({timestamp: -1}).limit(60).exec(function(err, entries) {
         if (err) {
             console.log(err);
         }
