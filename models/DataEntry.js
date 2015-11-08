@@ -10,7 +10,7 @@ var DataEntry = new Schema({
     cpu0: {type: Number},
     cpu1: {type: Number},
     cpu2: {type: Number},
-    cpu3: {type: Number},
+    cpu3: {type: Number}
 });
 
 module.exports = mongoose.model('DataEntry', DataEntry);
