@@ -7,9 +7,9 @@ var bodyParser = require('body-parser');
 
 var count = 0;
 
-// mongoose.connect('mongodb://localhost/myapp');
+mongoose.connect('mongodb://localhost/myapp');
 
-// var DataEntry = require('./models/DataEntry');
+var DataEntry = require('./models/DataEntry');
 
 app.use(bodyParser.json());
 
@@ -21,8 +21,17 @@ app.post('/receive', function(request, respond) {
     console.log('timestamp:\t' + timestamp);
     console.log('load:\t' + load);
 
+    var DataEntry = new DataEntry({
+        timestamp: new Date(timestamp),
+        cpu_usage: load
+    });
 
-    respond.status(200).send();
+    DataEntry.save(function(err) {
+        if (err) {
+            console.log(err);
+        }
+        respond.status(200).send();
+    })
 
 });
 
