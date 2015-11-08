@@ -43,9 +43,20 @@ app.post('/receive', function(request, respond) {
 
 });
 
-app.get('/cpu_usage', function(request, response) {
+app.get('/stats', function(request, response) {
 
     DataEntry.find().sort({timestamp: -1}).limit(60).exec(function(err, entries) {
+        if (err) {
+            console.log(err);
+        }
+
+        response.send(entries);
+    });
+});
+
+app.get('/latest', function(request, response) {
+
+    DataEntry.find().sort({timestamp: -1}).limit(1).exec(function(err, entries) {
         if (err) {
             console.log(err);
         }
