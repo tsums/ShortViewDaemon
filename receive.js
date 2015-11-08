@@ -19,13 +19,19 @@ app.post('/receive', function(request, respond) {
 
     var timestamp = request.body.payload[0].timestamp;
     var load = request.body.payload[0].LONGTERM.Load;
+    var mem_free = request.body.payload[0].LONGTERM['Memory.real.free'];
+    var mem_cache = request.body.payload[0].LONGTERM['Memory.real.cache'];
+    var mem_used = request.body.payload[0].LONGTERM['Memory.real.used'];
 
     var d = new Date(0);
     d.setUTCSeconds(timestamp);
 
     var de = new DataEntry({
         timestamp: d,
-        cpu_usage: load
+        cpu_usage: load,
+        mem_free: mem_free,
+        mem_used: mem_used,
+        mem_cace: mem_cache
     });
 
     de.save(function(err) {
