@@ -63,7 +63,7 @@ setInterval(function() {
             callback();
         });
     }], function() {
-        de.save(function(err) {
+        data.save(function(err) {
             if (err) {
                 console.log(err);
             }
